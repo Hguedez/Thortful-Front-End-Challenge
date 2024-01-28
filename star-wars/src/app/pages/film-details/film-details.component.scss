@@ -1,0 +1,50 @@
+.card{
+    border-radius: 1vw;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12) !important;
+}
+img.title-bg{
+    height: 500px;
+    width: -webkit-fill-available;
+}
+
+.title {
+    font-size: 1.25em;
+}
+img.heartbeat{
+    width: 5%;
+}
+
+hr{
+    border: 2px solid #CACACA;
+}
+.script{
+    text-align: justify;
+}
+
+.star{
+    margin: 0px 0px;
+    color: #a9a5a5;
+    display: inline-block;
+    cursor: pointer;
+    transition: all .3s;
+    transform: scale(1);
+  }
+.star .fa-star{
+    width:  40px;
+    height: 40px
+}
+
+.star-gold{
+    color: orange
+}
+// make all stars orange
+.star-rating-animation:hover .star-hover{
+    color: orange
+}
+// make all stars right from selected gray
+.star-rating-animation .star-hover:hover ~ .star-hover{
+    color: #ddd
+}
+.star-rating-animation .star-hover:hover{
+    transform: scale(1.3)
+}

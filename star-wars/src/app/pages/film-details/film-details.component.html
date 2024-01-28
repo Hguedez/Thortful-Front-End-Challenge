@@ -1,1 +1,32 @@
-<p>film-details works!</p>
+<ng-template #spinner>
+    <div class="container-fluid">
+        <div class="row d-flex align-items-center" style="height: 100vh;">
+            <div class="col-12 text-center">
+                <img class="heartbeat" src="../../../assets/img/light-saber.png" alt=""><br>
+                <p class="mt-2 heartbeat text-white">Loading...</p>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<div class="container-fluid" *ngIf="loaded;else spinner">
+    <div class="row d-flex justify-content-center mt-2">
+        <div class="card col-6 text-center">
+            <div class="mt-2 p-2">
+                <div style="font-family: 'Star Jedi', sans-serif;">Title: {{response.title}} </div>
+                <hr>
+                <div>Director: {{response.director}}</div>
+                <hr>
+                <div>Released: {{response.release_date}}</div>
+                <hr>
+                <div class="script"><i class="fa-solid fa-book-open text-dark fa-lg" ></i> {{response.opening_crawl}}</div>
+                <hr>
+                <div class="mt-2">Rate this movie</div>
+                <div class="star-rating-container star-rating-animation mt-1"  >
+                    <div *ngFor="let star of stars" [ngClass]="[star.class]" (click)="selectStar(star.id)">
+                        <i class="fa-regular fa-star" placement="bottom" ngbTooltip="{{star.tooltip}}"></i>
+                    </div>
+                </div>
+            </div>     
+        </div>
+    </div>
+</div>

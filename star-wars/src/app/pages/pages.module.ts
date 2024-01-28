@@ -4,12 +4,13 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FilmsComponent } from './films/films.component';
 import { FilmDetailsComponent } from './film-details/film-details.component';
-
+import { PagesComponent } from './pages.component';
 
 @NgModule({
   declarations: [
     FilmsComponent,
-    FilmDetailsComponent
+    FilmDetailsComponent,
+    PagesComponent
   ],
   imports: [
     CommonModule,
