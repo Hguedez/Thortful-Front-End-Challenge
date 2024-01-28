@@ -9,5 +9,13 @@ import { Router } from '@angular/router';
 export class PagesComponent {
   constructor(private router: Router) {}
 
+  /**
+   * [Move screen to a specific div]
+   * @param elementId [id of the div]
+   */
+  scrollToElement(elementId: string): void {
+    const element = document.getElementById(elementId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  }
 
 }

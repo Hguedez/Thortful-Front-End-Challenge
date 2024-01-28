@@ -9,16 +9,23 @@
     </div>
 </ng-template>
 <div class="container-fluid" *ngIf="loaded;else spinner">
-    <div class="row d-flex justify-content-center mt-2">
+    <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card col-10 col-lg-6 col-md-7 col-sm-8 text-center">
-            <div class="mt-2 p-2">
-                <div style="font-family: 'Star Jedi', sans-serif;">Title: {{response.title}} </div>
+            <div class=" p-2">
+                <div class="row">
+                    <div [routerLink]="['/']" class="d-flex justify-content-start">
+                        <i class="fa-solid fa-angle-left fa-2x"></i>
+                    </div>
+                </div>
+                <div>Title: {{film.title}} </div>
                 <hr>
-                <div>Director: {{response.director}}</div>
+                <div>Director: {{film.director}}</div>
                 <hr>
-                <div>Released: {{response.release_date}}</div>
+                <div>Released: {{film.release_date}}</div>
                 <hr>
-                <div class="script"><i class="fa-solid fa-book-open text-dark fa-lg" ></i> {{response.opening_crawl}}</div>
+                <div class="script"><i class="fa-solid fa-book-open text-dark fa-lg" ></i> {{film.opening_crawl}}</div>
+                <hr>
+                <div>Starships: <a href="#" (click)="$event.preventDefault(); controlSlidePage('',content)">See more</a></div>
                 <hr>
                 <div class="mt-2">Rate this movie</div>
                 <div class="star-rating-container star-rating-animation mt-1"  >
@@ -29,4 +36,31 @@
             </div>     
         </div>
     </div>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title text-white" id="modal-basic-title ">Starships 1..{{film.starships.length}}</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+                <div class="carousel-inner mx-4">
+                  <div class="carousel-item active mx-4">
+                    <div class="text-white">Name: {{ship.name}}</div>
+                    <div class="text-white">Model: {{ship.model}}</div>
+                    <div class="text-white">Manufacture: {{ship.manufacturer}}</div>
+                    <div class="text-white">Maximum speed: {{ship.max_atmosphering_speed}}</div>
+                    <div class="text-white">Passengers number: {{ship.passengers}}</div>
+                  </div>
+                </div>
+                <button (click)="controlSlidePage('back','')" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button (click)="controlSlidePage('next','')" class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </ng-template>
 </div>

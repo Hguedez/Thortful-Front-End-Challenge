@@ -6,7 +6,7 @@ import { ApiService } from './api.service';
 })
 export class FilmsService extends ApiService{
 
-  getFilm(id: number){
-    return this.http.get(this.API_URL+'films/'+id, this.httpOptions);
+  getFilm(film_Id: number){
+    return this.http.get(this.API_URL+'films/'+film_Id, this.httpOptions);
   }
 }
