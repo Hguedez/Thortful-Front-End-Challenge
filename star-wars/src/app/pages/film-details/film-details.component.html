@@ -38,7 +38,7 @@
     </div>
     <ng-template #content let-modal>
         <div class="modal-header">
-            <h4 class="modal-title text-white" id="modal-basic-title ">Starships 1..{{film.starships.length}}</h4>
+            <h4 class="modal-title text-white" id="modal-basic-title ">Starships {{slideIndex+1}}..{{film.starships.length}}</h4>
             <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
         <div class="modal-body">
