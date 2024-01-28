@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ FilmsService } from '../../core/services/films.service'
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-film-details',
@@ -58,6 +59,14 @@ export class FilmDetailsComponent implements OnInit{
     });
   }
 
+  sendMessage(message:any, icon:any){
+    Swal.fire({
+      icon: icon,
+      title: message,
+      showConfirmButton: false,
+    })
+  }
+
   getFilm(filmId: number) {
     this.filmsService.getFilm(filmId)
     .subscribe({
@@ -67,7 +76,7 @@ export class FilmDetailsComponent implements OnInit{
         console.log(this.response)
       },
       error: err => {
-        console.log(err);
+        this.sendMessage('Something went wrong', 'error')
       }
     });
   }
