@@ -7,7 +7,7 @@
 <h3 align="center">Thorful frontend challenge</h3>
 
   <p align="center"> 
-    <a href="https://github.com/Hguedez/Thortful-Front-End-Challenge.git" target="_blank">Request function</a>
+    <a href="https://github.com/Hguedez/Thortful-Front-End-Challenge/issues" target="_blank">Request function</a>
   </p>
 </div>
 
@@ -41,7 +41,9 @@ To obtain a local copy of the project, follow the steps below.
    ```sh
    ng serve --open
    ```
+## Running unit tests
 
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
