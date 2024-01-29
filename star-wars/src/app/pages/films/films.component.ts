@@ -13,7 +13,7 @@ export class FilmsComponent {
    * [Redirect user to films details interface]
    * @param id [Id of the specific film you want to see]
    */
-  goToFilm(id:number){
+  goToFilmDetails(id:number){
     this.router.navigate(['pages/details', id]);
   }
 }

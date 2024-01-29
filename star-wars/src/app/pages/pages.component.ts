@@ -14,8 +14,16 @@ export class PagesComponent {
    * @param elementId [id of the div]
    */
   scrollToElement(elementId: string): void {
-    const element = document.getElementById(elementId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    this.goToFilm();
+    setTimeout(() => {
+      const element = document.getElementById(elementId);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
   }
-
+   /**
+   * [Redirect user to film interface]
+   */
+  goToFilm(){
+    this.router.navigate(['/']);
+  }
 }
