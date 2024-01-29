@@ -18,11 +18,10 @@ describe('FilmDetailsComponent', () => {
   let starshipsService: jasmine.SpyObj<StarshipsService>;
 
   beforeEach(() => {
-    // Create a mock FilmsService
+    // Create a mock FilmsService and StarshipsService
     const filmsSpy = jasmine.createSpyObj('FilmsService', ['getFilm']);
-    // Create a mock StarshipsService
     const starshipsSpy = jasmine.createSpyObj('StarshipsService', ['getStarShip']);
-
+    
     TestBed.configureTestingModule({
       declarations: [FilmDetailsComponent],
       imports: [CommonModule, PagesRoutingModule, SharedModule, HttpClientTestingModule, RouterTestingModule],
@@ -50,7 +49,7 @@ describe('FilmDetailsComponent', () => {
         "https://swapi.dev/api/starships/41/"
       ], 
     };  // The expected film object
-    filmsService.getFilm.and.returnValue(of(expectedFilm)); // Mock the API call
+    filmsService.getFilm.and.returnValue(of(expectedFilm));
     component.getFilm(1);
     expect(component.film).toBe(expectedFilm); // Check if film was set correctly
     expect(component.loaded).toBeTrue(); // Check if loaded was set to true
@@ -80,7 +79,7 @@ describe('FilmDetailsComponent', () => {
       "MGLT": "unknown", 
       "starship_class": "Space cruiser",
     }; // The expected starship object
-    const content = {}; // Replace with the content object
+    const content = {}; 
     starshipsService.getStarShip.and.returnValue(of(expectedShip));
     spyOn(component, 'openModal');
     component.getStarShip('starshipUrl', 'action', content);
@@ -95,6 +94,25 @@ describe('FilmDetailsComponent', () => {
     component.getStarShip('starshipUrl', 'action', {});
     expect(component.showMessage).toHaveBeenCalledWith('Something went wrong', 'error');
   });
+
+  fit('should call getStarShip with "starship2" when action is "next" and next starship exists', () => {
+    component.film = { starships: ['starship1', 'starship2', 'starship3'] };
+    component.slideIndex = 0
+    const expectedStarship = 'starship2';
+    starshipsService.getStarShip.and.returnValue(of({}));
+    component.controlSlidePage('next', {});
+    expect(starshipsService.getStarShip).toHaveBeenCalledWith(expectedStarship);
+  });
+
+  fit('should call getStarShip with "starship1" when action is "back" and previous starship exists', () => {
+    component.film = { starships: ['starship1', 'starship2', 'starship3'] };
+    component.slideIndex = 1;
+    const expectedStarship = 'starship1';
+    starshipsService.getStarShip.and.returnValue(of({}));
+    component.controlSlidePage('back', {});
+    expect(starshipsService.getStarShip).toHaveBeenCalledWith(expectedStarship);
+  });
+  
 });
 
 
