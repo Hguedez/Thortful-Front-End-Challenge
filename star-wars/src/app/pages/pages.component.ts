@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent {
+  episodes = Array.from({length: 6}, (_, i) => `episode${i + 1}`);
+
   constructor(private router: Router) {}
 
   /**
@@ -14,8 +16,16 @@ export class PagesComponent {
    * @param elementId [id of the div]
    */
   scrollToElement(elementId: string): void {
-    const element = document.getElementById(elementId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    this.goToFilm();
+    setTimeout(() => {
+      const element = document.getElementById(elementId);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
   }
-
+   /**
+   * [Redirect user to film interface]
+   */
+  goToFilm(){
+    this.router.navigate(['/']);
+  }
 }

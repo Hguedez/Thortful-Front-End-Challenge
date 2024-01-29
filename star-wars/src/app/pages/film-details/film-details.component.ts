@@ -120,7 +120,7 @@ export class FilmDetailsComponent implements OnInit{
 
   /**
    * [Control which slides of the carousel are going to be shown]
-   * @param action [action of the modal if next or back]
+   * @param action [action of the carousel if next or back]
    * @param content [event triggered cause of modal]
    */
   controlSlidePage(action:string, content:any){
