@@ -124,6 +124,7 @@ export class FilmDetailsComponent implements OnInit{
    * @param content [event triggered cause of modal]
    */
   controlSlidePage(action:string, content:any){
+    this.ship = {}
     if(action === "next" && this.film.starships[this.slideIndex+1]){
       this.slideIndex++
       this.getStarShip(this.film.starships[this.slideIndex],action)
