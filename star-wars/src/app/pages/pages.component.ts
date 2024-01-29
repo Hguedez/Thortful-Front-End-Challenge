@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent {
+  episodes = Array.from({length: 6}, (_, i) => `episode${i + 1}`);
+
   constructor(private router: Router) {}
 
   /**
