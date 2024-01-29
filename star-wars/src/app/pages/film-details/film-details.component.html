@@ -30,7 +30,7 @@
                 <div class="mt-2">Rate this movie</div>
                 <div class="star-rating-container star-rating-animation mt-1"  >
                     <div *ngFor="let star of stars" [ngClass]="[star.class]" (click)="selectStar(star.id)">
-                        <i class="fa-regular fa-star" placement="bottom" ngbTooltip="{{star.tooltip}}"></i>
+                        <i class="fa-regular fa-star" placement="bottom"></i>
                     </div>
                 </div>
             </div>     
@@ -42,7 +42,7 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
         <div class="modal-body">
-            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" *ngIf="ship.length > 0">
                 <div class="carousel-inner mx-4">
                   <div class="carousel-item active mx-4">
                     <div class="text-white">Name: {{ship.name}}</div>
