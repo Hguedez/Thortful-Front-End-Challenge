@@ -5,6 +5,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { FilmsComponent } from './films/films.component';
 import { FilmDetailsComponent } from './film-details/film-details.component';
 import { PagesComponent } from './pages.component';
+import { NavbarService } from '../core/services/navbar.service'
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { PagesComponent } from './pages.component';
     FilmDetailsComponent,
     PagesComponent
   ],
+  providers: [NavbarService],
   imports: [
     CommonModule,
     PagesRoutingModule,

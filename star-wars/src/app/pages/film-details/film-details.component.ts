@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
 import{ FilmsService } from '../../core/services/films.service'
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { StarshipsService } from '../../core/services/starships.service'
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarService } from '../../core/services/navbar.service';
 
 @Component({
   selector: 'app-film-details',
   templateUrl: './film-details.component.html',
   styleUrls: ['./film-details.component.scss']
 })
-export class FilmDetailsComponent implements OnInit{
+export class FilmDetailsComponent implements OnInit, OnDestroy {
   
   film_Id:number = 0
   film:any = {}
@@ -56,14 +57,24 @@ export class FilmDetailsComponent implements OnInit{
     private filmsService: FilmsService, 
     private starShipsService: StarshipsService,
     private route: ActivatedRoute,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private navbarService: NavbarService
   ) {}
 
   ngOnInit(): void {
     //window.scrollTo(0, 0);
+    setTimeout(() => {
+      this.navbarService.setShowNavbar(false);
+    });
     this.route.params.subscribe(params => {
       this.film_Id = +params['id']; 
       this.getFilm(this.film_Id)
+    });
+  }
+
+  ngOnDestroy() {
+    setTimeout(() => {
+      this.navbarService.setShowNavbar(true);
     });
   }
   
