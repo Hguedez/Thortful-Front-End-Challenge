@@ -42,7 +42,7 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
         <div class="modal-body">
-            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" *ngIf="ship.length > 0">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" *ngIf="(ship | json) != '{}'">
                 <div class="carousel-inner mx-4">
                   <div class="carousel-item active mx-4">
                     <div class="text-white">Name: {{ship.name}}</div>
